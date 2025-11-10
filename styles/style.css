@@ -23,7 +23,7 @@ Variáveis para cores
 }
 
 :root {
-    --main-bg: #c6d7ea;
+    --main-bg: #dcecff;
     --text: #222527;
     --text-darkmode: #fbffe6;
     --highlight: #6B60E0;
@@ -35,7 +35,7 @@ Variáveis para cores
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     line-height: 1.5em;
-    background-clor: var(--main-bg);
+    background-color: var(--main-bg);
     color: var(--text);
 }
 
@@ -53,6 +53,7 @@ nav#menu ul {
     list-style: none;
     display: flex;
     gap: 10px;
+    font-size: 1em;
 }
 
 nav#menu a {
@@ -69,3 +70,11 @@ nav#menu a:hover {
     color: var(--highlight);
 
 }
+
+#social a {
+    text-decoration: none;
+    padding: 10px;
+    font-size: 1em;
+}
+
+
