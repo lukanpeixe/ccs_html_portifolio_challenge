@@ -23,6 +23,13 @@ Variáveis para cores
     
 }
 
+@font-face {
+    font-family: 'Orbitron';
+    src: url('../media/fonts/Orbitron-ExtraBold.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
 :root {
     --back-bg: #eee;
     --main-bg: #dcecff;
@@ -77,6 +84,7 @@ nav#menu a:hover {
 
 
 main {
+    
     display: grid;
     grid-template-columns: 1fr 90vw 1fr;    
     gap: 20px;    
@@ -286,52 +294,193 @@ section#social a.github:hover::after {
     #skills-container {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 30px
+        gap: 30px        
     }
 
     #skills-container .item {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr;
         
     }
 
     #skills-container .info {
+        
+        
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
     #skills-container .name {
+        
+        height: 5rem;
         font-weight: bold;
         color: var(--text)
     }
 
+    #skills-container .percent-box {
+        grid-area: 1 / 2 / 3 / 3;
+        position: relative;
+        z-index: 0;
+
+        
+
+        display: flex;
+        justify-content: center;
+        align-items: start;
+
+        transform: scaleY(1.2) skewX(-20deg);
+        background-color: var(--highlight);
+        
+        
+        mix-blend-mode: darken;
+    }
+
+    #skills-container .percent-box::after {
+        content: '';
+        position: absolute;
+        height: 14%;
+        width: 100%;
+        top: 52%;
+        left: 0px;
+        right: ;
+        
+        
+        
+        background-image: radial-gradient(circle, var(--card-bg) 2px, transparent 2px);
+        background-size: 7px 7px;
+        
+        animation: scrollGrid 5s linear infinite;
+    }
+
+    
+    
+    #skills-container .percent-wrapper {
+        
+    }
+
     #skills-container .percent {
-        font-weight: bold;
-        color: var(--highlight)        
+
+        padding: 10px;
+        
+        font-family: 'Orbitron', sans-serif;
+        transform: scaleY(2) skewX(-20deg);
+
+        font-size: 36px;
+        color: rgb(255, 255, 255);
+        
     }
 
     #skills-container .bar {
-        transform: skewX(-20deg);
+        position: relative;
         
+        transform: skewX(-20deg);
+        grid-area: 2 / 1 / 3 / 3;
         
         width: 100%;
-        height: 22px;
-        background-color: var(--main-bg);
-        border-radius: 8px;
-        border: solid 2px var(--button-idle);
+        height: 24px;
+        
+        /* background-color: color-mix(in srgb, var(--button-idle) 70%, transparent); */
+        background-color:  var(--button-idle);
+
+        /* border-radius: 8px; */
+        border: solid 3px black;
+        z-index: 1;
+        
+    }
+
+    #skills-container .bar::before {
+        content: '';
+        position: absolute;
+        height: 160%;
+        width: 100%;
+        top: -50%;
+        left: 5px;
+        right: 0;
+        
+        
+
+        background-color: #fff;
+        border: solid 4px var(--highlight);
+        
+        
+        z-index: -1;
+        mix-blend-mode: overlay;
+        /* transform: rotate(1deg) skewX(-30deg); */
+
     }
 
     #skills-container .progress {        
-            
-    
+        
+        
         height: 100%;
+        
+        /* background-color: color-mix(in srgb, var(--highlight-darkmode-extra) 70%, transparent); */
+        
         background-color: var(--highlight-darkmode-extra);
         border-radius: 0px;
-        box-shadow: inset 8px -4px 0px 1px rgba(0, 0, 0, 0.55),
+        box-shadow: inset 8px -4px 0px 1px var(--highlight-darkmode-bg),
                     inset 16px 4px 0px 1px var(--highlight-darkmode);
+        
+        animation: animaSombras 8s infinite;
+
+        
+
+
     }
 
+    #skills-container .item:nth-child(1) .progress { animation-delay: 0s; }
+    #skills-container .item:nth-child(2) .progress { animation-delay: 2s; }
+    #skills-container .item:nth-child(3) .progress { animation-delay: 4s; }
+    #skills-container .item:nth-child(4) .progress { animation-delay: 6s; }
+
+
+
     @media screen and (min-width: 768px) {
-        #skill-container {
+        #skills-container {
             grid-template-columns: 1fr 1fr;
+            
         }
     }
+
+
+
+
+@keyframes animaSombras {
+
+    0% {
+        box-shadow:
+        inset 8px -4px 0px 1px var(--highlight-darkmode-bg),
+        inset 16px 4px 0px 1px var(--highlight-darkmode);
+    }
+
+    10% {
+        box-shadow:
+        inset 8px -4px 0px 1px var(--highlight-darkmode-bg),
+        inset 16px 4px 0px 1px var(--highlight-darkmode);
+    }
+    
+    15% {
+        box-shadow:
+        inset -8px 4px 0px 0px var(--highlight-darkmode-bg),
+        inset -16px -4px 0px 0px var(--highlight-darkmode);
+    }
+    
+    20% {
+        box-shadow:
+        inset 8px -4px 0px 1px var(--highlight-darkmode-bg),
+        inset 16px 4px 0px 1px var(--highlight-darkmode);
+    }
+}
+
+    
+
+
+
+
+@keyframes scrollGrid {
+  0% { background-position: 0 0; }
+  100% { background-position: 7px 0px; }
+  /* A mágica: quando chega em 30px, volta ao início sem quebra! */
+}
+
