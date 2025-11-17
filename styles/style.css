@@ -280,16 +280,160 @@ section#social a.github:hover::after {
         width: 100%;
         margin: auto;
         aspect-ratio: 16/9;
+        transform: rotate(-3.814075deg) ;
     }
 
     .video-container iframe {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: center;
+        left: 5%;
+        width: 90%;
+        height: 90%;
         border-radius: 10px;
+        
+        z-index: 3;
+        
+        
     }
+
+    .video-container-layer-1 {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background-image: 
+        url('../media/dots/dothatching.png');
+        background-size:        100vw;
+        background-position:    0% -50%;
+        
+        
+        
+        
+        
+        filter: invert(0.1);
+        
+        mix-blend-mode:  overlay;
+        
+
+        top: -5%;
+        left: -50%;
+        width: 200%;
+        height: 100%;
+        
+        
+        pointer-events: none;
+
+    }
+
+    .video-container-layer-2 {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+    
+        background-image:
+        
+        linear-gradient(
+         313deg,
+        #111111ff 0%,
+        #555555ff 25%,
+        #111111ff 25%,
+        #555555ff 50%,
+        #bbbbbbff 50%,
+        #ffffffff 75%,
+        #bbbbbbff 75%,
+        #ffffffff 100%
+        ),
+        linear-gradient(in hsl , var(--highlight-darkmode-bg), var(--highlight-darkmode))
+        ;
+        
+        
+        background-blend-mode:   soft-light, normal;
+        background-repeat:  repeat, space;
+        background-size:        12.5% 100% , 200vw 100%;
+        background-position:    center, center;
+
+        
+
+        
+        
+        image-rendering: pixelated;
+        
+        
+
+        
+        
+
+        top: -5%;
+        left: -50%;
+        width: 200%;
+        height: 100%;
+
+
+
+        
+        transition: background-size 2s ease;
+        
+    }
+
+
+    .video-container-layer-2:hover {
+        background-size:        12.5% 160% , 200vw 100%;        
+    }
+
+    .video-container::after {
+        content: '';
+        
+        
+        box-shadow:
+        0px 0px 2px 8px black,
+        0px 0px 2px 16px white,
+        0px 0px 4px 16px black;
+
+        position: absolute;
+        top: -5%;
+        left: -50%;
+        width: 200%;
+        height: 100%;
+        z-index: 0;
+        border-radius: 10px;
+        
+    }
+
+    .video-container::before {
+            content: '';
+            box-sizing: border-box;
+ 
+            box-shadow: inset   0vw 0vw     1px   6px     var(--highlight),
+                        
+                                0vw 0vw     1px   5px     white;
+
+            position: absolute;
+            top: center;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+            z-index: 3;
+            
+            
+            will-change: transform;
+            backface-visibility: hidden;
+
+
+            pointer-events: none;
+            transition: box-shadow 0.5s;
+            /* backface-visibility: hidden;
+            filter: blur(0.5px); */
+        }
+    
+    .video-container:hover::before {
+
+
+
+
+        box-shadow: inset   0px 0px 0px 0px var(--button-idle),
+                    
+                            0vw 0vw 1px 5px white;
+    }
+
 
     #skills-container {
         display: grid;
@@ -299,8 +443,8 @@ section#social a.github:hover::after {
 
     #skills-container .item {
         display: grid;
-        grid-template-columns: 3fr 1fr 1fr;
-        
+        grid-template-columns: 3fr 1fr ;
+        padding: 20px;
     }
 
     #skills-container .info {
@@ -343,7 +487,7 @@ section#social a.github:hover::after {
         width: 100%;
         top: 52%;
         left: 0px;
-        right: ;
+        right: 0px ;
         
         
         
@@ -392,16 +536,16 @@ section#social a.github:hover::after {
     #skills-container .bar::before {
         content: '';
         position: absolute;
-        height: 160%;
+        height: 170%;
         width: 100%;
-        top: -50%;
+        top: -51%;
         left: 5px;
         right: 0;
         
         
 
         background-color: #fff;
-        border: solid 4px var(--highlight);
+        border: solid 3px var(--highlight);
         
         
         z-index: -1;
@@ -484,3 +628,6 @@ section#social a.github:hover::after {
   /* A mágica: quando chega em 30px, volta ao início sem quebra! */
 }
 
+<svg width="200" height="200">
+  <rect width="100" height="50" transform="rotate(30)" fill="red"/>
+</svg>
