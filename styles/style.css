@@ -50,6 +50,7 @@ body {
     line-height: 1.5em;
     background-color: var(--back-bg);
     color: var(--text);
+    
 }
 
 header {
@@ -83,11 +84,11 @@ nav#menu a:hover {
 }
 
 
-main {
-    
+main {    
     display: grid;
     grid-template-columns: 1fr 90vw 1fr;    
-    gap: 20px;    
+    gap: 20px;
+    overflow-x: clip; /* ! ■ ■ ■ CAUTION ■ ■ ■ */   
 }
 
 section#profile {
@@ -251,7 +252,10 @@ section#social a.github:hover::after {
     
     section#details {
         grid-column: 2;
+        
     }
+
+
 
     article {
         background-color: var(--card-bg);
@@ -264,6 +268,8 @@ section#social a.github:hover::after {
         color: var(--highlight);
         margin-bottom: 10px;
     }
+
+
 
     article#video p {
         padding: 5px;
@@ -280,7 +286,8 @@ section#social a.github:hover::after {
         width: 100%;
         margin: auto;
         aspect-ratio: 16/9;
-        transform: rotate(-3.814075deg) ;
+        transform: rotate(-3.814075deg);
+        
     }
 
     .video-container iframe {
@@ -438,13 +445,25 @@ section#social a.github:hover::after {
     #skills-container {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 30px        
+        gap: 30px;
+        
+        * {
+        transition: 
+            width 3s ease,
+            height 3s ease,
+            transform 3s ease,
+            margin 3s ease,
+            padding 3s ease;
+        }
     }
+
+    
+
 
     #skills-container .item {
         display: grid;
         grid-template-columns: 3fr 1fr ;
-        padding: 20px;
+        padding: 5px 20px 5px 20px;
     }
 
     #skills-container .info {
@@ -457,9 +476,10 @@ section#social a.github:hover::after {
 
     #skills-container .name {
         
-        height: 5rem;
+        height: 4rem;
         font-weight: bold;
         color: var(--text)
+        
     }
 
     #skills-container .percent-box {
@@ -467,11 +487,13 @@ section#social a.github:hover::after {
         position: relative;
         z-index: 0;
 
-        
+        width: 5rem;
 
         display: flex;
-        justify-content: center;
+        justify-content: end;
         align-items: start;
+        
+        justify-self: end;
 
         transform: scaleY(1.2) skewX(-20deg);
         background-color: var(--highlight);
@@ -485,7 +507,7 @@ section#social a.github:hover::after {
         position: absolute;
         height: 14%;
         width: 100%;
-        top: 52%;
+        top: 45%;
         left: 0px;
         right: 0px ;
         
@@ -505,12 +527,14 @@ section#social a.github:hover::after {
 
     #skills-container .percent {
 
-        padding: 10px;
+        padding: 5px;
+        
         
         font-family: 'Orbitron', sans-serif;
-        transform: scaleY(2) skewX(-20deg);
+        transform: scaleY(1.5) skewX(-20deg);
 
-        font-size: 36px;
+        font-size: 22px;
+        letter-spacing: 3px;
         color: rgb(255, 255, 255);
         
     }
@@ -518,6 +542,7 @@ section#social a.github:hover::after {
     #skills-container .bar {
         position: relative;
         
+
         transform: skewX(-20deg);
         grid-area: 2 / 1 / 3 / 3;
         
