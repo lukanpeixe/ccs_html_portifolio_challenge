@@ -42,7 +42,49 @@ Variáveis para cores
     --highlight-darkmode-bg: #e06080;
     --card-bg:#dbdee0;
     --button-idle: #545A61;
+
+   
+
 }
+
+@property --opacity {
+  syntax: '<number>'; /* <- defined as type number for the transition to work */
+  initial-value: 0;
+  inherits: false;
+}
+
+@keyframes fadeIn {
+  50% {--opacity: 1}
+}
+
+
+
+
+
+
+
+#test01 {
+    
+    height: 100px;
+    width: 100px;
+    background-color: var(--highlight-darkmode);
+    display: none;
+
+}
+
+#test01:hover {
+    background-color: #6B60E0;
+    animation: 2s fadeIn ;        
+    background: rgba(100 0 100 / var(--opacity));
+}
+
+@keyframes hack {
+    0% {border-radius: 0%;}
+    20% {border-radius: 100%;}
+    100% {border-radius: 0%;}
+}
+
+
 
 
 body {
@@ -111,6 +153,7 @@ section#profile img.photo {
   
 }
 
+
 /* Wrapper que vai receber o pseudo-elemento */
 section#profile .profile-photo-wrapper {
   position: relative;  
@@ -118,6 +161,7 @@ section#profile .profile-photo-wrapper {
   display: block;
   margin: auto;
   margin-bottom: 25px;
+  pointer-events: none;
 }
 
 /* Pseudo-elemento para simular o outline */
@@ -446,25 +490,55 @@ section#social a.github:hover::after {
         display: grid;
         grid-template-columns: 1fr;
         gap: 30px;
-        
-        * {
-        transition: 
-            width 3s ease,
-            height 3s ease,
-            transform 3s ease,
-            margin 3s ease,
-            padding 3s ease;
+    }
+
+    @media screen and (min-width: 768px) {
+        #skills-container {
+            grid-template-columns: 1fr 1fr;
+            
         }
     }
 
-    
-
-
     #skills-container .item {
+        position: relative;
         display: grid;
         grid-template-columns: 3fr 1fr ;
         padding: 5px 20px 5px 20px;
     }
+
+    #skills-container .item .description {
+        
+        position: absolute;
+        grid-area: 1/1/2/3;
+        
+
+        align-self: end;
+        
+        left: 8%;
+        width: 98%;
+
+        
+        font-size: clamp(0.5em, 1em, 1.5em);
+        
+        color: var(--text);
+        z-index: 5;
+        
+      
+
+        transform: skewX(-10deg) scaleY(0);
+        
+        transition: transform 0.2s ease-in;
+    }
+
+
+    #skills-container .item:focus .description {
+            
+        transform: skewX(-10deg) scaleY(1);    
+        transition: transform 1s ease-out;  
+        
+    }
+
+
 
     #skills-container .info {
         
@@ -476,9 +550,12 @@ section#social a.github:hover::after {
 
     #skills-container .name {
         
+        justify-self: center;
+        
         height: 4rem;
         font-weight: bold;
-        color: var(--text)
+        color: var(--text);
+        
         
     }
 
@@ -500,6 +577,13 @@ section#social a.github:hover::after {
         
         
         mix-blend-mode: darken;
+        transition:  width 0.7s ease-in-out , transform 0.7s ease-in-out;
+        
+    }
+
+    #skills-container .item:focus .percent-box {
+        width: 400%;
+        transform: scaleY(1.3) skewX(-12deg);
     }
 
     #skills-container .percent-box::after {
@@ -517,9 +601,21 @@ section#social a.github:hover::after {
         background-size: 7px 7px;
         
         animation: scrollGrid 5s linear infinite;
+        transition:
+        height 0.7s,
+        top 0.7s;
     }
 
-    
+    #skills-container .item:focus .percent-box::after {
+        background-image: radial-gradient(circle, var(--card-bg) 2px, transparent 2px);
+        animation: scrollGrid 0.3s linear infinite;        
+        height: 55%;
+        top: 10%;
+        transition:        
+        height 4s ease-out,
+        top 4s ease-out;
+    }
+
     
     #skills-container .percent-wrapper {
         
@@ -537,6 +633,12 @@ section#social a.github:hover::after {
         letter-spacing: 3px;
         color: rgb(255, 255, 255);
         
+        
+        transition: transform 0.3s;
+    }
+
+    #skills-container .item:focus .percent {
+        transform: scaleY(0) skewX(-20deg);
     }
 
     #skills-container .bar {
@@ -555,7 +657,14 @@ section#social a.github:hover::after {
         /* border-radius: 8px; */
         border: solid 3px black;
         z-index: 1;
+        transition: transform 0.7s ease;
+
+       
         
+    }
+
+    #skills-container .item:focus .bar {
+       transform: skewX(-12deg);
     }
 
     #skills-container .bar::before {
@@ -568,15 +677,46 @@ section#social a.github:hover::after {
         right: 0;
         
         
+        background-image: url(../media/dots/dothatching.png);
+        background-size: 50%;
+        background-repeat: no-repeat;
+        background-position: 150% -120%;
+        
+        
+        
 
         background-color: #fff;
+        
         border: solid 3px var(--highlight);
         
         
         z-index: -1;
         mix-blend-mode: overlay;
-        /* transform: rotate(1deg) skewX(-30deg); */
+        transform: skewX(0deg); 
+        transition: 
+        height              0.5s ease-in,
+        top                 0.5s ease-in,
+        transform           0.5s ease-in,
+        background-position 0.2s ease-in;
+        
+    }
 
+    #skills-container .item:focus .bar::before {        
+        
+        text-align: right;
+        display: flex;
+       
+        height: 570%;        
+        top: -430%;      
+        transform: skewX(2.5deg);       
+        background-position: 150% -80%;
+
+        transition: 
+        height              0.5s ease-in,
+        top                 0.5s ease-in,
+        transform           0.5s ease-in,
+        background-position 0.2s ease-in;
+        
     }
 
     #skills-container .progress {        
@@ -588,30 +728,72 @@ section#social a.github:hover::after {
         
         background-color: var(--highlight-darkmode-extra);
         border-radius: 0px;
-        box-shadow: inset 8px -4px 0px 1px var(--highlight-darkmode-bg),
-                    inset 16px 4px 0px 1px var(--highlight-darkmode);
+        
+        box-shadow:
+        inset 8px -4px 0px 1px var(--highlight-darkmode-bg),
+        inset 16px 4px 0px 1px var(--highlight-darkmode);
         
         animation: animaSombras 8s infinite;
+        transition: all 0.3s ease;
+    }
+
+    #skills-container .item:focus .progress {
+        background-color: var(--highlight);            
+        box-shadow:
+        inset 8px -4px 0px 1px var(--text),
+        inset 16px 4px 0px 1px var(--highlight-50);
+        animation: none;
+      
+    }
+
+    #skills-container .percent-front {
+        position: absolute;
+        justify-content: end;
+        top: -15%;
+        right: 0%; 
+
+        font-family: 'Orbitron', sans-serif;
+        font-size: 120%;
+        text-align: right;
+        color: var(--main-bg);
+        
+        text-shadow: 0px 0px 2px black, 0px 0px 2px black, 0px 0px 2px black, 0px 0px 1px black, 0px 0px 1px black, 0px 0px 1px black;
+        padding-left: 2%;
+        padding-right: 2%;
 
         
-
-
+        transform: translateY(20px);   /* ponto de partida */
+        opacity: 0;
+        transition: transform 0.3s cubic-bezier(.24, .82, .16, 1), opacity 0.3s ease-in;
     }
+
+
+
+    #skills-container .item:focus .percent-front  {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+
+
+
+
+
+
+/* Opcional: Adiciona um feedback visual ao item inteiro */
+.item:focus-within {
+  /* *    outline: solid 5px var(--highlight-50);    */
+
+}
+
+
+
+
 
     #skills-container .item:nth-child(1) .progress { animation-delay: 0s; }
     #skills-container .item:nth-child(2) .progress { animation-delay: 2s; }
     #skills-container .item:nth-child(3) .progress { animation-delay: 4s; }
     #skills-container .item:nth-child(4) .progress { animation-delay: 6s; }
-
-
-
-    @media screen and (min-width: 768px) {
-        #skills-container {
-            grid-template-columns: 1fr 1fr;
-            
-        }
-    }
-
 
 
 
