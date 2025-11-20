@@ -489,7 +489,7 @@ section#social a.github:hover::after {
     #skills-container {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 30px;        
     }
 
     @media screen and (min-width: 768px) {
@@ -503,7 +503,7 @@ section#social a.github:hover::after {
         position: relative;
         display: grid;
         grid-template-columns: 3fr 1fr ;
-        padding: 5px 20px 5px 20px;
+
     }
 
     #skills-container .item .description {
@@ -548,11 +548,24 @@ section#social a.github:hover::after {
         align-items: center;
     }
 
-    #skills-container .name {
+    #skills-container .skill-tittle-box {
         
-        justify-self: center;
+        
         
         height: 4rem;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        
+        
+        
+    }
+
+    #skills-container .skill-tittle {
+        
+        padding-bottom: 1em;
+        padding-left: 1.5em;
+        
         font-weight: bold;
         color: var(--text);
         
@@ -572,7 +585,7 @@ section#social a.github:hover::after {
         
         justify-self: end;
 
-        transform: scaleY(1.2) skewX(-20deg);
+        transform: scaleY(1.2) skewX(-20deg) scaleX(1);
         background-color: var(--highlight);
         
         
@@ -673,16 +686,16 @@ section#social a.github:hover::after {
         height: 170%;
         width: 100%;
         top: -51%;
-        left: 5px;
+        left: 1.8%;
         right: 0;
         
         
         background-image: url(../media/dots/dothatching.png);
-        background-size: 50%;
+        background-size: 216px auto;
+        
+        background-position: left 200px top 10px;
+        
         background-repeat: no-repeat;
-        background-position: 150% -120%;
-        
-        
         
 
         background-color: #fff;
@@ -697,7 +710,7 @@ section#social a.github:hover::after {
         height              0.5s ease-in,
         top                 0.5s ease-in,
         transform           0.5s ease-in,
-        background-position 0.2s ease-in;
+        ;
         
     }
 
@@ -709,7 +722,7 @@ section#social a.github:hover::after {
         height: 570%;        
         top: -430%;      
         transform: skewX(2.5deg);       
-        background-position: 150% -80%;
+        
 
         transition: 
         height              0.5s ease-in,
