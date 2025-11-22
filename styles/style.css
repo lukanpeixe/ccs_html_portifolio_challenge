@@ -591,7 +591,8 @@ section#social a.github:hover::after {
         
         mix-blend-mode: darken;
         transition:  width 0.7s ease-in-out , transform 0.7s ease-in-out;
-        
+
+        overflow: hidden;
     }
 
     #skills-container .item:focus .percent-box {
@@ -616,48 +617,62 @@ section#social a.github:hover::after {
         content: '';
         position: absolute;
         height: 14%;
-        width: 100%;
+        width: 200%;
         top: 45%;
         left: 0px;
-        right: 0px ;
+        right: 0px;
 
         
-        mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 8 8'><circle cx='6' cy='6' r='3' fill='white'/></svg>") repeat;
-        background-color: var(--card-bg);   
         
-        mask-position: auto;
-        mask-size: 6px;
-       
-            
+        mask-image:
+        url(../media/dots/dot-line-s12-x240-y12-p2-currentColor.svg),
+        url(../media/dots/dot-line-s12-x240-y12-p2-currentColor.svg);
+        mask-size: 64px;
+        mask-repeat: repeat, repeat;
+        mask-position: -64px 0, 0px 0;
+        
+        background-color: var(--card-bg);
+        transform: translateX(0);
         
         transition:
         height 0.7s,
-        top 0.7s;
+        top 0.7s,
+        mask-size 0.7s;
         
-        animation: scrollGrid 5s linear infinite;
+        animation: scrollGrid 22s linear infinite;
         
-
     }
 
     #skills-container .item:focus .percent-box::after {
+                
         
-        animation: scrollGrid 0.3s linear infinite;        
-        height: 55%;
-        top: 10%;
+        animation: scrollGrid 22s linear infinite;
+        animation: scrollGridBlur 6s linear infinite;
+
+        height: 56%;
+        top: 7%;
         transition:        
         height 4s ease-out,
-        top 4s ease-out;
+        top 4s ease-out,
+        mask-size 2s ease-out;
     }
 
     @keyframes scrollGrid {
-        0% { mask-position: 0 0;}
-        100% { mask-position: 6px 0px;}
+        0% { transform: translateX(0);}
+        100% { transform: translateX(-64px);}
     }
 
+    @keyframes scrollGridBlur {
+        0% { filter: blur(0) invert(0);}
+        50% { filter: blur(5) invert(1);}
+        100% { filter: blur(0) invert(0);}
+    }
     
     #skills-container .percent-wrapper {
         
     }
+
+
 
     #skills-container .percent {
 
