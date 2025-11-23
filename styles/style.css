@@ -473,7 +473,7 @@ section#social a.github:hover::after {
             transition: box-shadow 0.5s;
             /* backface-visibility: hidden;
             filter: blur(0.5px); */
-        }
+    }
     
     .video-container:hover::before {
 
@@ -489,14 +489,7 @@ section#social a.github:hover::after {
     #skills-container {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 30px;        
-    }
-
-    @media screen and (min-width: 768px) {
-        #skills-container {
-            grid-template-columns: 1fr 1fr;
-            
-        }
+        gap: 30px;
     }
 
     #skills-container .item {
@@ -907,13 +900,81 @@ section#social a.github:hover::after {
     }
 }
 
+#projects-general-container {
     
+    
+    gap: 20px;
+}
+
+.project-container {
+    display: grid;
+    
+    background-color: var(--main-bg);    
+    border-radius: 8px;
+    padding: 10px;
+    
+}
+
+
+.project-container .project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: var(--main-bg);
+    padding: 10px;
+    border: 5px solid var(--highlight);
+
+
+    border-left: 5px solid var(--highlight);
+    transition: border-color 0.5s, border-width 0.5s;
+    
+    transform: skewX(10deg);
+
+}
+
+.project-container .project-info:hover {
+    border-color: var(--highlight-darkmode-bg);
+    border-left-width: 15px;
+    cursor: pointer;
+
+    transform: skewX(-10deg);
+}
+
+.project-container .picture {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    overflow: hidden;
+    
+}
+
+@media screen and (min-width: 768px) {
+        #skills-container {
+            
+        }
+
+        .project-container {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+
+        .project-container .project-info {
+            grid-area: 1 / 1 / 2 / 4;
+        }
+
+
+
+        .project-container .picture {
+            grid-area: 1 / 1 / -1 / -1 ;
+            aspect-ratio: 5/3;
+            height: 100%;            
+        }
+
+    }
 
 
 
 
-
-
-<svg width="200" height="200">
+/* <svg width="200" height="200">
   <rect width="100" height="50" transform="rotate(30)" fill="red"/>
-</svg>
+</svg> */
