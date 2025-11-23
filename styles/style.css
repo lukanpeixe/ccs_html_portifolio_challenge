@@ -589,8 +589,8 @@ section#social a.github:hover::after {
         background-color: var(--highlight);
         
         
-        mix-blend-mode: darken;
-        transition:  width 0.7s ease-in-out , transform 0.7s ease-in-out;
+        
+        transition:  width 0.2s ease-out , transform 0.2s ease-out;
 
         overflow: hidden;
     }
@@ -600,9 +600,7 @@ section#social a.github:hover::after {
         transform: scaleY(1.3) skewX(-12deg);
     }
 
-    .my-element {
-    
-    }
+
 
     /*
         mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 8 8'><circle cx='6' cy='6' r='6' fill='white'/></svg>") repeat;
@@ -611,12 +609,12 @@ section#social a.github:hover::after {
         /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cdefs%3E%3Cpattern id='d' width='6' height='6' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='3' cy='3' r='2' fill='%23fa0'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23d)'/%3E%3C/svg%3E");
         */
 
-
+    
 
     #skills-container .percent-box::after {
         content: '';
         position: absolute;
-        height: 14%;
+        height: 13%;
         width: 200%;
         top: 45%;
         left: 0px;
@@ -634,27 +632,18 @@ section#social a.github:hover::after {
         background-color: var(--card-bg);
         transform: translateX(0);
         
-        transition:
-        height 0.7s,
-        top 0.7s,
-        mask-size 0.7s;
         
-        animation: scrollGrid 22s linear infinite;
+        opacity: 1;
+        transition: opacity 0.2s;
+        animation: scrollGrid 22s linear infinite;      
         
     }
 
     #skills-container .item:focus .percent-box::after {
                 
-        
-        animation: scrollGrid 22s linear infinite;
-        animation: scrollGridBlur 6s linear infinite;
+        transition: opacity 0.2s;
+        opacity: 0;
 
-        height: 56%;
-        top: 7%;
-        transition:        
-        height 4s ease-out,
-        top 4s ease-out,
-        mask-size 2s ease-out;
     }
 
     @keyframes scrollGrid {
@@ -662,11 +651,49 @@ section#social a.github:hover::after {
         100% { transform: translateX(-64px);}
     }
 
-    @keyframes scrollGridBlur {
-        0% { filter: blur(0) invert(0);}
-        50% { filter: blur(5) invert(1);}
-        100% { filter: blur(0) invert(0);}
+    #skills-container .percent-box .dot-grid-open {
+
+        position: absolute;
+        height: 55%;
+        width: 20%;
+        top: 7%;
+
+        
+        left: 0;
+        right: 80%;
+
+        
+        
+        mask-image:
+        url(../media/dots/dot-line-s12-x240-y12-p2-currentColor.svg),
+        url(../media/dots/dot-line-s12-x240-y12-p2-currentColor.svg);
+        mask-size: 64px;
+        mask-repeat: repeat, repeat;
+        mask-position: -64px 0, 0px 0;
+        
+        background-color: var(--card-bg);
+        transform: translateX(0);
+
+        
+        animation: scrollGrid 22s linear infinite;
+        
+        opacity: 0;
+        transition: all 0.2s;
+        
     }
+
+    #skills-container .item:focus .percent-box .dot-grid-open {
+              
+        
+        transform: translateX(0);
+        opacity: 1;
+        transition: opacity 0.2s ease-in;
+        
+
+    }
+
+    
+
     
     #skills-container .percent-wrapper {
         
@@ -687,7 +714,7 @@ section#social a.github:hover::after {
         color: rgb(255, 255, 255);
         
         
-        transition: transform 0.3s;
+        transition: transform 0.2s;
     }
 
     #skills-container .item:focus .percent {
@@ -710,7 +737,7 @@ section#social a.github:hover::after {
         /* border-radius: 8px; */
         border: solid 3px black;
         z-index: 1;
-        transition: transform 0.7s ease;
+        transition: transform 0.2s ease;
 
        
         
@@ -750,9 +777,9 @@ section#social a.github:hover::after {
         transform: skewX(0deg);
 
         transition: 
-        height              0.5s ease-in,
-        top                 0.5s ease-in,
-        transform           0.5s ease-in,
+        height              0.2s ease-in,
+        top                 0.2s ease-in,
+        transform           0.2s ease-in,
         background-position 0.2s ease-in;
         
     }
@@ -769,9 +796,9 @@ section#social a.github:hover::after {
 
 
         transition: 
-        height              0.5s ease-in,
-        top                 0.5s ease-in,
-        transform           0.5s ease-in,
+        height              0.2s ease-in,
+        top                 0.2s ease-in,
+        transform           0.2s ease-in,
         background-position 0.2s ease-in;
         
     }
@@ -820,14 +847,14 @@ section#social a.github:hover::after {
 
         
         transform: scaleY(0) ;   /* ponto de partida */
-        transition: transform 0.5s;
+        transition: transform 0.2s;
     }
 
 
 
     #skills-container .item:focus .percent-front  {
         transform: scaleY(1);
-        transition: transform 0.7s;
+        transition: transform 0.2s;
     }
 
 
