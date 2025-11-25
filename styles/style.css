@@ -130,7 +130,7 @@ main {
     display: grid;
     grid-template-columns: 1fr 90vw 1fr;    
     gap: 20px;
-    overflow-x: clip; /* ! ■ ■ ■ CAUTION ■ ■ ■ */   
+    overflow-x: clip; /* ! ■ ■ ■ CAUTION ■ ■ ■ Isso mata o scroll horizontal */   
 }
 
 section#profile {
@@ -310,10 +310,13 @@ section#social a.github:hover::after {
 
     article h2 {
         color: var(--highlight);
-        margin-bottom: 10px;
+        margin-bottom: 30px;
+        text-align: center;
     }
 
-
+    /** ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ **/
+    /** VIDEO CONTAINER ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ **/
+    /** ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ **/
 
     article#video p {
         padding: 5px;
@@ -477,14 +480,15 @@ section#social a.github:hover::after {
     
     .video-container:hover::before {
 
-
-
-
         box-shadow: inset   0px 0px 0px 0px var(--button-idle),
                     
                             0vw 0vw 1px 5px white;
     }
 
+
+    /** ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ **/
+    /** SKILLS CONTAINER ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ **/
+    /** ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ **/ 
 
     #skills-container {
         display: grid;
@@ -511,7 +515,7 @@ section#social a.github:hover::after {
         width: 98%;
 
         
-        font-size: clamp(0.5em, 1em, 1.5em);
+        font-size: 1em;
         
         color: var(--text);
         z-index: 5;
@@ -900,73 +904,203 @@ section#social a.github:hover::after {
     }
 }
 
+/** ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ **/
+/** MY PROJECTS CONTAINER ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ **/
+/** ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ **/
+
 #projects-general-container {
+    display: grid;
+    grid-column: 1fr;
+    gap: 6%;
     
-    
-    gap: 20px;
 }
 
 .project-container {
+    position: relative;
     display: grid;
-    
+    aspect-ratio: 16/9;
+    width: 100%;
+    grid-template-columns: repeat(18, 1fr);
+    grid-template-rows: repeat(11, 1fr);
     background-color: var(--main-bg);    
     border-radius: 8px;
-    padding: 10px;
+    
     
 }
 
+
+.project-container .project-head {
+    grid-area: 1/1/3/-1;
+    
+    box-shadow: 0 0 5px rgba(50, 50, 50, 0.5),
+        inset 0px 0px 3px 7px  rgba(222, 222, 222, 0.602),
+        0px 0px 0px 5px white;
+
+    background-color: var(--back-bg);
+    
+    padding: 4px;
+    
+    
+    border: 8px solid var(--highlight);
+    border-left: 8px solid white;
+    border-right: 8px solid white;
+    border-top: 8px solid white;
+
+    border-radius: 20px 20px 0 0;
+
+    
+    
+    transform: rotate3d(0,0,0,90deg);
+
+
+    z-index: 4;
+}
 
 .project-container .project-info {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background-color: var(--main-bg);
+    grid-area: -3/1/-1/-1;
+
+    background-image: linear-gradient(in hsl , rgba(255, 255, 255, 1),rgba(128, 128, 128, 1));
     padding: 10px;
-    border: 5px solid var(--highlight);
+    
+    
+    border: 8px solid var(--highlight);
+    border-left: 8px solid white;
+    border-right: 8px solid white;
 
-
-    border-left: 5px solid var(--highlight);
     transition: border-color 0.5s, border-width 0.5s;
     
-    transform: skewX(10deg);
+    border-radius: 0 0 20px 20px;
 
+
+    z-index: 4;
 }
 
-.project-container .project-info:hover {
-    border-color: var(--highlight-darkmode-bg);
-    border-left-width: 15px;
-    cursor: pointer;
-
-    transform: skewX(-10deg);
-}
 
 .project-container .picture {
+    grid-area: 2/2/-2/-2;
     width: 100%;
-    aspect-ratio: 16/9;
+    height: 100%;
+    
+    aspect-ratio: 16/9;    
     object-fit: cover;
     overflow: hidden;
+    
+    /*filter: blur(8px) brightness(0.7) contrast(2.5);*/
+
+}
+
+.project-container .project-layer-02 {
+grid-area: 3/2/-3/3;
+background: rgba(219, 219, 219, 0.373);
+            box-shadow: inset 0px 0px 3px 4px rgba(255, 255, 255, 0.399);
+z-index: 5;
+height: 100%;
+width: 100%;
+
+transform: skewX(12deg);
+
+
+
+}
+
+
+
+.project-container .project-layer-01 {
+    
+    position: absolute;
+    grid-area: 2/1/-2/-1;    
+
+
+
+    width: 200%;
+    right: -50%;
+
+    height: 100%;
+    
+    z-index: 2;
+    
+    
+    border: solid 4px black;
+    box-shadow: inset 0 0 0 8px black,
+                0 0 0 8px var(--highlight),
+                0 0 0 16px white;
+}
+
+.project-container .project-layer-01-bg {
+    position: absolute;
+
+    background-image:   url(../media/dots/Halftone-Effect-Background.svg),
+                        radial-gradient(var(--highlight) 0 20%,black 65% 100%); 
+    
+    background-size: 50%, 100% 150%;
+    /*background-position: right -100px top -14%;*/
+                        
+    
+    mask-image: linear-gradient(78.75deg, black 0 30%, transparent 30% 70%, black 70% 100%);
+    mask-size: 100% 100%;
+    mask-repeat: repeat, repeat;
+    mask-position: 0 0, 0px 0;    
+
+    height: 100%;
+    width: 100%;
+
+    
+    
     
 }
 
 @media screen and (min-width: 768px) {
         #skills-container {
-            
+            grid-template-columns: 1fr 1fr;
         }
 
         .project-container {
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr 1fr;
+            aspect-ratio: 16/9;
+            width: 100%;
+            grid-template-columns: repeat(18, 1fr);
+            grid-template-rows: repeat(11, 1fr);
+            overflow: hidden;
         }
 
-        .project-container .project-info {
-            grid-area: 1 / 1 / 2 / 4;
+        .project-container .project-head {
+            grid-area: 1 / -5 / 3 / -1;            
         }
 
+        .project-container .project-layer-01 {
+            
+            z-index: 5;
+            grid-area: 8 / 3 / 10 / -3;
+            border-radius: 15px;
 
+            background: rgba(219, 219, 219, 0.373);
+            box-shadow: inset 0px 0px 3px 4px rgba(255, 255, 255, 0.399);
+
+        }
+
+        .project-container .project-layer-02 {
+            
+            z-index: 4;
+            transform: skewY(20deg);
+            grid-area: 1 / 1 / -1 / -1;
+            
+            
+
+            background: rgba(19, 19, 0, 0.45);
+            box-shadow: inset 0px 0px 3px 4px rgba(255, 255, 255, 0.399);
+            mix-blend-mode: darken;
+            transition: all 1s ease;
+        }
+
+        .project-container .project-layer-02:hover {
+            
+            
+            
+
+        }
 
         .project-container .picture {
-            grid-area: 1 / 1 / -1 / -1 ;
-            aspect-ratio: 5/3;
+            grid-area: 2 / 2 / -2 / -2 ;
+            aspect-ratio: 16/9;
             height: 100%;            
         }
 
