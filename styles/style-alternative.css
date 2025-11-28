@@ -1,0 +1,71 @@
+/** Design alternativos, descartados ou experimentais, não inclusos no projeto final*/
+
+
+/* ? Barras horizontais "meio círculo" com textura interessante para título e contra parte bottom ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ */
+
+#projects-general-container {
+    display: grid;
+    grid-column: 1fr;
+    gap: 6%;
+    
+}
+
+.project-container {
+    position: relative;
+    display: grid;
+    aspect-ratio: 16/9;
+    width: 100%;
+    grid-template-columns: repeat(18, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+    background-color: var(--main-bg);    
+    border-radius: 8px;
+    
+    
+}
+
+
+.project-container .project-head {
+    grid-area: 1/1/3/-1;
+    
+    box-shadow: 0 0 5px rgba(50, 50, 50, 0.5),
+        inset 0px 0px 3px 7px  rgba(222, 222, 222, 0.602),
+        0px 0px 0px 5px white;
+
+    background-color: var(--back-bg);
+    
+    padding: 4px;
+    
+    
+    border: 8px solid var(--highlight);
+    border-left: 8px solid white;
+    border-right: 8px solid white;
+    border-top: 8px solid white;
+
+    border-radius: 20px 20px 0 0;
+
+    
+    
+    transform: rotate3d(0,0,0,90deg);
+
+
+    z-index: 4;
+}
+
+.project-container .project-info {
+    grid-area: -3/1/-1/-1;
+
+    background-image: linear-gradient(in hsl , rgba(255, 255, 255, 1),rgba(128, 128, 128, 1));
+    padding: 10px;
+    
+    
+    border: 8px solid var(--highlight);
+    border-left: 8px solid white;
+    border-right: 8px solid white;
+
+    transition: border-color 0.5s, border-width 0.5s;
+    
+    border-radius: 0 0 20px 20px;
+
+
+    z-index: 4;
+}
